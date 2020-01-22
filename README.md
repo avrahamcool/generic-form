@@ -1,4 +1,4 @@
-# `au-1`
+# `generic-form`
 
 This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
 
