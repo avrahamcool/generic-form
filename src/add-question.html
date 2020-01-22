@@ -1,0 +1,18 @@
+<template>
+	<ux-dialog>
+		<ux-dialog-body>
+			<h2>Insert a new question</h2>
+			what type of question is this?
+			<select value.bind="selectedQuestionType">
+				<option model.bind="null">Choose...</option>
+				<option repeat.for="type of questionType.All" model.bind="type">${type.displayName}</option>
+			</select>
+			<compose if.bind="selectedQuestionConfiguration" view-model.bind="selectedQuestionConfiguration.createElement" model.bind="{question: selectedQuestionConfiguration.questionModel, answer: selectedQuestionConfiguration.answerModel}" />
+		</ux-dialog-body>
+
+		<ux-dialog-footer>
+			<button click.trigger="controller.cancel()">Cancel</button>
+			<button disabled.bind="!selectedQuestionType" click.trigger="controller.ok(selectedQuestionConfiguration)">Ok</button>
+		</ux-dialog-footer>
+	</ux-dialog>
+</template>

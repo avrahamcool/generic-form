@@ -1,0 +1,8 @@
+<template>
+	${question.questionText} 
+	<select value.bind="answer.answer">
+		<option model.bind="null">Choose...</option>
+		<option repeat.for="o of question.options" model.bind="o">${o.text}</option>
+	</select>
+	${answer.answer.text}
+</template>

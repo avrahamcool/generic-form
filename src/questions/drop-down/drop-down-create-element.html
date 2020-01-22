@@ -1,0 +1,17 @@
+<template>
+	<div>What should be the question text?</div>
+	<input value.bind="question.questionText">
+
+	<div>
+		list all available options 
+		<button click.delegate="question.options.push({text: ''})">add new option</button></div>
+	<div repeat.for="o of question.options" >
+		<input value.bind="o.text" placeholder="option ${$index + 1}"></option>
+	</div>
+
+	<div>What should be the default answer?</div>
+	<select value.bind="answer.answer">
+		<option model.bind="null">Choose...</option>
+		<option repeat.for="o of question.options" model.bind="o">${o.text}</option>
+	</select>
+</template>

@@ -1,0 +1,16 @@
+<template>
+	<div>What should be the question text?</div>
+	<input value.bind="question.questionText">
+
+	<div>What should be the minimum value?</div>
+	<input type="number" value.bind="question.min">
+
+	<div>What should be the maximum value?</div>
+	<input type="number" value.bind="question.max">
+
+	<div>What should be the step?</div>
+	<input type="number" value.bind="question.step">
+
+	<div>What should be the default answer?</div>
+	<input type="range" value.bind="answer.answer" min.bind="question.min" max.bind="question.max" step.bind="question.step"/> ${answer.answer}
+</template>
