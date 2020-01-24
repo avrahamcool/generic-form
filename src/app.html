@@ -1,7 +1,8 @@
 <template>
-	<h1>List of questions</h1>
-	<button click.delegate="addQuestion()">Add Question</button>
-	<div repeat.for="q of questions">
-		<compose view-model.bind="q.displayElement" model.bind="{question: q.questionModel, answer: q.answerModel}" />
-	</div>
+	<require from="./app.scss"></require>
+	<!-- <require from="./questions/questions"></require>
+	<questions></questions> -->
+
+	<require from="./movable-tester/movable-tester"></require>
+	<movable-tester></movable-tester>
 </template>

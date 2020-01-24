@@ -1,0 +1,8 @@
+<template>
+	<require from="./movable-element"></require>
+	<button click.delegate="addMovable()">Add movable</button> <button click.delegate="logMovable()">Console.log all data</button>
+	<div>
+		<movable-element repeat.for="movableConfiguration of movables"
+			movable-configuration.bind="movableConfiguration"></movable-element>
+	</div>
+</template>
