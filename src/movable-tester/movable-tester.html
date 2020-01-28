@@ -1,7 +1,22 @@
 <template>
 	<require from="./movable-element"></require>
-	<button click.delegate="addMovable()">Add movable</button> <button click.delegate="logMovable()">Console.log all data</button>
-	<div>
+
+	<div class="a1-row a1-spaced-items">
+		<div>
+			<let selected-product-b-g.bind="1"></let>
+			<label><input type="radio"  name="selectedProductBG" model.bind="1" checked.bind="selectedProductBG"> Square</label>
+			<label><input type="radio" name="selectedProductBG" model.bind="2" checked.bind="selectedProductBG"> Horizontal</label>
+			<label><input type="radio" name="selectedProductBG" model.bind="3" checked.bind="selectedProductBG"> Vertical</label>
+		</div>
+		<button click.delegate="addMovable()">Add movable</button>
+		<button click.delegate="logMovable()">Console.log all data</button>
+	</div>
+
+	<div class="a1-long drag-area">
+		<img if.bind="selectedProductBG === 1" class="background" src="./bg-square.png" />
+		<img if.bind="selectedProductBG === 2" class="background" src="./bg-vertical.png" />
+		<img if.bind="selectedProductBG === 3" class="background" src="./bg-horizontal.png" />
+
 		<movable-element repeat.for="movableConfiguration of movables"
 			movable-configuration.bind="movableConfiguration"></movable-element>
 	</div>

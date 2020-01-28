@@ -610,6 +610,11 @@ ajv@^6.1.0, ajv@^6.10.2, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+aleph1-layout@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/aleph1-layout/-/aleph1-layout-1.0.3.tgz#1a0506459c06336b55a66fe0ec8b60e2b6913bc7"
+  integrity sha512-96O+6ymxOgDRSqjGTmn/D/i+owDTaT4oic8Lcizq7P9V7LKUzE1HQ2aQHGFhXj5AeI5dw/BnjN4AyDucBWMhJQ==
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
@@ -2315,6 +2320,11 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
+
+css-element-queries@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/css-element-queries/-/css-element-queries-1.2.3.tgz#e14940b1fcd4bf0da60ea4145d05742d7172e516"
+  integrity sha512-QK9uovYmKTsV2GXWQiMOByVNrLn2qz6m3P7vWpOR4IdD6I3iXoDw5qtgJEN3Xq7gIbdHVKvzHjdAtcl+4Arc4Q==
 
 css-loader@^1.0.0:
   version "1.0.1"

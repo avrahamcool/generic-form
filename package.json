@@ -8,9 +8,11 @@
 	},
 	"license": "MIT",
 	"dependencies": {
+		"aleph1-layout": "^1.0.3",
 		"aurelia-animator-css": "^1.0.4",
 		"aurelia-bootstrapper": "^2.3.2",
 		"aurelia-dialog": "^2.0.0",
+		"css-element-queries": "^1.2.3",
 		"moveable": "^0.13.4"
 	},
 	"devDependencies": {

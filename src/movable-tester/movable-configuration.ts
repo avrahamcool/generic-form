@@ -1,6 +1,8 @@
 export class MovableConfiguration
 {
-	translate = [0, 0];
-	scale = [1, 1];
-	rotate = 0;
+	left: number = 0;
+	top: number = 0;
+	height: number = 10;
+	width: number = 15;
+	rotate: number = 0;
 };
