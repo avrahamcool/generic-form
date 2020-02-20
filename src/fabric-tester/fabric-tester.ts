@@ -1,5 +1,4 @@
 import { observable } from 'aurelia-framework';
-import { computedFrom } from 'aurelia-framework';
 import { ResizeSensor } from 'css-element-queries';
 import { Dimension } from './dimension';
 import { fabric } from "fabric";
@@ -7,11 +6,11 @@ import bedSVG from "./bed.svg";
 import { contains, ClientPosition } from "./intrinsic-scale";
 
 export class FabricTester {
-	allDimentions: Dimension[] = Dimension.All;
+	allDimensions: Dimension[] = Dimension.All;
 
 	@observable()
-	selectedDimention: Dimension = Dimension.D1X1;
-	selectedDimentionChanged(newDimention: Dimension)
+	selectedDimension: Dimension = Dimension.D1X1;
+	selectedDimensionChanged()
 	{
 		this.calculateScaledAreaRect();
 	}
@@ -19,7 +18,13 @@ export class FabricTester {
 	mainAreaRef: HTMLDivElement;
 	resizeSensor: ResizeSensor;
 	canvasRef: HTMLCanvasElement;
-	scaledAreaRect: ClientPosition;
+	scaledAreaRect: {
+		width: string,
+		height: string,
+		left: string,
+		top: string,
+	};
+	originalParentWidth: number;
 
 	canvasFabric: fabric.Canvas;
 	attached() {
@@ -38,11 +43,24 @@ export class FabricTester {
 	calculateScaledAreaRect()
 	{
 		if(!this.mainAreaRef) return {};
-		this.scaledAreaRect = contains(this.mainAreaRef.clientWidth, this.mainAreaRef.clientHeight, this.selectedDimention.ratio);
+		const position = contains(this.mainAreaRef.clientWidth, this.mainAreaRef.clientHeight, this.selectedDimension.ratio);
+		
+		if(!this.scaledAreaRect)
+		{
+			this.originalParentWidth = position.width;
+		}
 
-		//this.canvasFabric.setWidth(this.scaledAreaRect.width);
-		// this.canvasFabric.setHeight(this.scaledAreaRect.height);
-		//this.canvasFabric.renderAll();
+		this.scaledAreaRect = {
+			width: `${position.width}px`,
+			height: `${position.height}px`,
+			top: `${position.top}px`,
+			left: `${position.left}px`
+		};
+
+		this.canvasFabric.setZoom(position.width / this.originalParentWidth);
+		this.canvasFabric.setDimensions({ width: position.width, height: position.height });
+		this.canvasFabric.calcOffset();
+		this.canvasFabric.renderAll();
 	}
 
 	addBed()

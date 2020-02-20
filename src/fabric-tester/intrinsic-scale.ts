@@ -1,9 +1,9 @@
 export interface ClientPosition
 {
-	width: string,
-	height: string,
-	left: string,
-	top: string,
+	width: number,
+	height: number,
+	left: number,
+	top: number,
 }
 
 export function contains(parentWidth: number, parentHeight: number, childRatio: number) : ClientPosition
@@ -20,9 +20,9 @@ export function contains(parentWidth: number, parentHeight: number, childRatio: 
     }
 
 	return {
-		width: `${width}px`,
-		height: `${height}px`,
-		top: `${(parentHeight - height) / 2}px`,
-		left: `${(parentWidth - width) / 2}px`
+		width,
+		height,
+		top: (parentHeight - height) / 2,
+		left: (parentWidth - width) / 2
 	}
 };
