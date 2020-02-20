@@ -8,7 +8,7 @@
 		</div>
 		<div class="a1-column a1-padding a1-spaced-items">
 			<select class="a1-ltr" value.bind="selectedDimention">
-				<option repeat.for="d of dimentions" model.bind="d">${d.width} X ${d.height}</option>
+				<option repeat.for="d of allDimentions" model.bind="d">${d.width} X ${d.height}</option>
 			</select>
 		</div>
 		<div class="a1-long a1-column a1-padding a1-spaced-items">
@@ -27,12 +27,15 @@
 	</div>
 
 	<div class="a1-long a1-column a1-padding ">
-		<div class="hd-component a1-long a1-column hd-main-area hd-border-t hd-border-r hd-border-b hd-border-l">
+		<div class="hd-component a1-long a1-column hd-border-radius-all hd-border-t hd-border-r hd-border-b hd-border-l">
 			<div class="a1-row a1-center-items-h a1-padding hd-border-b">כותרת ראשית / שם אגף</div>
 			<div class="a1-row a1-center-items-h a1-padding hd-border-b">BLA BLA</div>
-			<div class="a1-long a1-padding" ref="canvasHolderHTML" style="position: relative">
-				<div css.bind="canvasDynamicSize" style="background-color: red; position: absolute;"></div>
-				<!-- <canvas ref="canvasHTML"></canvas> -->
+			<div class="a1-long a1-row a1-padding">
+				<div class="a1-long" ref="mainAreaRef">
+					<div css.bind="scaledAreaRect" class="scaledArea">
+						<canvas ref="canvasRef"></canvas>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

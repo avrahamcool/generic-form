@@ -1,36 +1,48 @@
+import { observable } from 'aurelia-framework';
 import { computedFrom } from 'aurelia-framework';
-//import { ResizeSensor } from 'css-element-queries';
+import { ResizeSensor } from 'css-element-queries';
 import { Dimension } from './dimension';
 import { fabric } from "fabric";
 import bedSVG from "./bed.svg";
-import { contains } from "./intrinsic-scale";
+import { contains, ClientPosition } from "./intrinsic-scale";
 
 export class FabricTester {
-	dimentions: Dimension[] = Dimension.All;
-	selectedDimention: Dimension = Dimension.D1X1;
+	allDimentions: Dimension[] = Dimension.All;
 
-	canvasHolderHTML: HTMLDivElement;
-	canvasHTML: HTMLCanvasElement;
-	bedHTML: HTMLImageElement;
-	maharHTML: HTMLImageElement;
+	@observable()
+	selectedDimention: Dimension = Dimension.D1X1;
+	selectedDimentionChanged(newDimention: Dimension)
+	{
+		this.calculateScaledAreaRect();
+	}
+
+	mainAreaRef: HTMLDivElement;
+	resizeSensor: ResizeSensor;
+	canvasRef: HTMLCanvasElement;
+	scaledAreaRect: ClientPosition;
 
 	canvasFabric: fabric.Canvas;
 	attached() {
-		this.canvasFabric = new fabric.Canvas(this.canvasHTML);
+		this.canvasFabric = new fabric.Canvas(this.canvasRef);
 
-		// new ResizeSensor(this.canvasHolderHTML, () => {
-		// });
-	}
-
-	@computedFrom("canvasHolderHTML.clientWidth", "canvasHolderHTML.clientHeight", "selectedDimention")
-	get canvasDynamicSize()
-	{
-		if(!this.canvasHolderHTML) return {};
-		return contains(this.canvasHolderHTML.clientWidth, this.canvasHolderHTML.clientHeight, this.selectedDimention.ratio);
+		this.resizeSensor = new ResizeSensor(this.mainAreaRef, () => {
+			this.calculateScaledAreaRect();
+		});
 	}
 
 	detached() {
 		this.canvasFabric.dispose();
+		this.resizeSensor.detach();
+	}
+
+	calculateScaledAreaRect()
+	{
+		if(!this.mainAreaRef) return {};
+		this.scaledAreaRect = contains(this.mainAreaRef.clientWidth, this.mainAreaRef.clientHeight, this.selectedDimention.ratio);
+
+		//this.canvasFabric.setWidth(this.scaledAreaRect.width);
+		// this.canvasFabric.setHeight(this.scaledAreaRect.height);
+		//this.canvasFabric.renderAll();
 	}
 
 	addBed()
