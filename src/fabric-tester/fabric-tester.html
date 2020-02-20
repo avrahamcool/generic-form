@@ -10,6 +10,7 @@
 			<select class="a1-ltr" value.bind="selectedDimension">
 				<option repeat.for="d of allDimensions" model.bind="d">${d.width} X ${d.height}</option>
 			</select>
+			<label>Drawing Mode <input type="checkbox" checked.bind="isInDrawingMode"></label>
 		</div>
 		<div class="a1-long a1-column a1-padding a1-spaced-items">
 			<span>אובייקטים</span>
@@ -20,10 +21,10 @@
 				<button click.delegate="addBed()">Add bed</button>
 			</div>
 		</div>
-		<div class="a1-row a1-spaced-items a1-center-items-v">
-			<button>X</button>
+		<label class="a1-row a1-spaced-items a1-center-items-v">
+			<button click.delegate="remove()">X</button>
 			<span>מחיקה</span>
-		</div>
+		</label>
 	</div>
 
 	<div class="a1-long a1-column a1-padding ">

@@ -27,8 +27,19 @@ export class FabricTester {
 	originalParentWidth: number;
 
 	canvasFabric: fabric.Canvas;
+
+	@observable()
+	isInDrawingMode = false;
+	isInDrawingModeChanged(newValue: boolean)
+	{
+		if(this.canvasFabric)
+		{
+			this.canvasFabric.isDrawingMode = newValue;
+		}
+	}
+
 	attached() {
-		this.canvasFabric = new fabric.Canvas(this.canvasRef);
+		window["canvasFabric"] = this.canvasFabric = new fabric.Canvas(this.canvasRef);
 
 		this.resizeSensor = new ResizeSensor(this.mainAreaRef, () => {
 			this.calculateScaledAreaRect();
@@ -69,7 +80,13 @@ export class FabricTester {
 		{
 			let bed = fabric.util.groupSVGElements(objects, options);
 			this.canvasFabric.add(bed);
-			bed.center();
+			bed.viewportCenter();
 		});
+	}
+
+	remove()
+	{
+		this.canvasFabric.remove(...this.canvasFabric.getActiveObjects());
+		this.canvasFabric.discardActiveObject();
 	}
 }
