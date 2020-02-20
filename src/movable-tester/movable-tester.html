@@ -1,23 +1,26 @@
 <template>
 	<require from="./movable-element"></require>
+	<require from="./bg-code-to-img"></require>
 
 	<div class="a1-row a1-spaced-items">
 		<div>
-			<let selected-product-b-g.bind="1"></let>
-			<label><input type="radio"  name="selectedProductBG" model.bind="1" checked.bind="selectedProductBG"> Square</label>
-			<label><input type="radio" name="selectedProductBG" model.bind="2" checked.bind="selectedProductBG"> Horizontal</label>
-			<label><input type="radio" name="selectedProductBG" model.bind="3" checked.bind="selectedProductBG"> Vertical</label>
+			<label><input type="radio" name="selectedBG" model.bind="1" checked.bind="selectedBG">
+				Square</label>
+			<label><input type="radio" name="selectedBG" model.bind="2" checked.bind="selectedBG">
+				Horizontal</label>
+			<label><input type="radio" name="selectedBG" model.bind="3" checked.bind="selectedBG">
+				Vertical</label>
 		</div>
 		<button click.delegate="addMovable()">Add movable</button>
 		<button click.delegate="logMovable()">Console.log all data</button>
 	</div>
 
-	<div class="a1-long drag-area">
-		<img if.bind="selectedProductBG === 1" class="background" src="./bg-square.png" />
-		<img if.bind="selectedProductBG === 2" class="background" src="./bg-vertical.png" />
-		<img if.bind="selectedProductBG === 3" class="background" src="./bg-horizontal.png" />
+	<div class="a1-long parent-container" ref="parentContainer">
+		<img show.bind="false" ref="backgroundImage" src.bind="selectedBG | bgCodeToImg" />
 
-		<movable-element repeat.for="movableConfiguration of movables"
-			movable-configuration.bind="movableConfiguration"></movable-element>
+		<div class="drag-area" style.bind="XXX">
+			<movable-element repeat.for="movableConfiguration of movables"
+				movable-configuration.bind="movableConfiguration"></movable-element>
+		</div>
 	</div>
 </template>

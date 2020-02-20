@@ -1,0 +1,39 @@
+$main-background-color: #efefef;
+$component-background-color: white;
+$border-color: #ccc;
+
+fabric-tester {
+	background-color: $main-background-color;
+}
+.hd-border-t {
+	border-top: 1px solid $border-color;
+}
+.hd-border-b {
+	border-bottom: 1px solid $border-color;
+}
+.hd-border-l {
+	border-left: 1px solid $border-color;
+}
+.hd-border-r {
+	border-right: 1px solid $border-color;
+}
+
+.hd-logo {
+	max-width: 35px;
+}
+
+.hd-component {
+	background-color: $component-background-color;
+}
+
+.hd-main-area {
+	border-radius: 5px;
+}
+// div[ref=canvasHolderHTML]
+// {
+// 	background-color: red;
+// }
+
+canvas {
+	border: 1px solid $border-color;
+}

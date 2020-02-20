@@ -1,0 +1,39 @@
+<template>
+	<require from="./fabric-tester.scss"></require>
+
+	<div class="hd-component a1-column a1-padding a1-spaced-items a1-divided-items">
+		<div class="a1-row a1-spaced-items a1-center-items-v">
+			<img class="hd-logo" src="./mahar.png">
+			<span>מרכז רפואי הדסה</span>
+		</div>
+		<div class="a1-column a1-padding a1-spaced-items">
+			<select class="a1-ltr" value.bind="selectedDimention">
+				<option repeat.for="d of dimentions" model.bind="d">${d.width} X ${d.height}</option>
+			</select>
+		</div>
+		<div class="a1-long a1-column a1-padding a1-spaced-items">
+			<span>אובייקטים</span>
+			<div class="a1-column a1-padding a1-spaced-items">
+				<button click.delegate="addBed()">Add bed</button>
+				<button click.delegate="addBed()">Add bed</button>
+				<button click.delegate="addBed()">Add bed</button>
+				<button click.delegate="addBed()">Add bed</button>
+			</div>
+		</div>
+		<div class="a1-row a1-spaced-items a1-center-items-v">
+			<button>X</button>
+			<span>מחיקה</span>
+		</div>
+	</div>
+
+	<div class="a1-long a1-column a1-padding ">
+		<div class="hd-component a1-long a1-column hd-main-area hd-border-t hd-border-r hd-border-b hd-border-l">
+			<div class="a1-row a1-center-items-h a1-padding hd-border-b">כותרת ראשית / שם אגף</div>
+			<div class="a1-row a1-center-items-h a1-padding hd-border-b">BLA BLA</div>
+			<div class="a1-long a1-padding" ref="canvasHolderHTML" style="position: relative">
+				<div css.bind="canvasDynamicSize" style="background-color: red; position: absolute;"></div>
+				<!-- <canvas ref="canvasHTML"></canvas> -->
+			</div>
+		</div>
+	</div>
+</template>
