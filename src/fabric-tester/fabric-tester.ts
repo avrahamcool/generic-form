@@ -89,4 +89,16 @@ export class FabricTester {
 		this.canvasFabric.remove(...this.canvasFabric.getActiveObjects());
 		this.canvasFabric.discardActiveObject();
 	}
+
+	save()
+	{
+		localStorage.setItem("canvas", JSON.stringify(this.canvasFabric.toJSON()));
+	}
+
+	load()
+	{
+		this.canvasFabric.loadFromJSON(localStorage.getItem("canvas"), ()=>{
+			this.canvasFabric.renderAll();
+		});
+	}
 }
